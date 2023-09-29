@@ -6,6 +6,7 @@ h4 {
 }
 p {
     color: beige;
+    /*font: bolder 200px;*/
 }
 #Enemy {
     color: rgb(121, 13, 66);
