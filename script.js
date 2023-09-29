@@ -13,7 +13,7 @@ function Add(Type,Name,num) {
             if (ZacksHP <= 0) {
                 ZacksHPdisp.innerText = "Link died"
             }
-        }
+        }}
     else if (Type == "MP") {
         if (Name == "Sam") {
             SamsMP += num
@@ -22,7 +22,7 @@ function Add(Type,Name,num) {
         else if (Name == "Zack") {
             ZacksMP += num
             ZacksMPdisp.innerText = "Links MP: "+ZacksMP
-        }
+        }}
     else if (Type == "Money") {
         if (Name == "All") {
             Money += num
@@ -33,8 +33,6 @@ function Add(Type,Name,num) {
         console.log("error")
     }
     }
-    }
-}
 function hide(Name,Val) {
     if (Name == "Sam") {
         if (Val == 1) {
