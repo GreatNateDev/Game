@@ -1,15 +1,6 @@
 html {
     background: #000000;
 }
-#bank_div {
-background-color: #696969; 
-border: 10px solid #097d1a;
-color: #07d125;
-padding: 20px;
-width: 50px;
-height: 100px;
-font: bold;
-}
 h4 {
     color: beige;
 }
@@ -18,12 +9,6 @@ p {
 }
 #Enemy {
     color: rgb(121, 13, 66);
-}
-#Bank_text {
-    color: #097d1a;
-}
-#loot {
-    color:#097d1a;
 }
 #ZackDam {
     color: red;
@@ -45,4 +30,13 @@ p {
 }
 #Money {
     color: gold;
+}
+#Enemy2 {
+    color: rgb(196, 25, 25);
+}
+#Sams_armor {
+    color: lightblue;
+}
+#Zacks_armor {
+    color: lightblue;
 }
