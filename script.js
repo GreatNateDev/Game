@@ -542,3 +542,39 @@ SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
 ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
 Enemydisp.innerText = "There is peace.";
 Enemydisp2.innerText = "There is peace.";
+//Console copy and pasted from some yt vid so that mobile users can use this site
+const consoleInput = document.querySelector(".console-input");
+
+function addResult(inputAsString, output) {
+  const outputAsString =
+    output instanceof Array ? `[${output.join(", ")}]` : output.toString();
+  const inputLogElement = document.createElement("div");
+  const outputLogElement = document.createElement("div");
+
+  inputLogElement.classList.add("console-input-log");
+  outputLogElement.classList.add("console-output-log");
+
+  inputLogElement.textContent = `> ${inputAsString}`;
+  outputLogElement.textContent = outputAsString;
+}
+
+consoleInput.addEventListener("keyup", (e) => {
+  const code = consoleInput.value.trim();
+
+  if (code.length === 0) {
+    return;
+  }
+
+  if (e.key === "Enter") {
+    try {
+      addResult(code, eval(code));
+    } catch (err) {
+      addResult(code, err);
+    }
+
+    consoleInput.value = "";
+  }
+});
+//580
+//lines of code lets
+//go!
