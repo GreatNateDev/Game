@@ -1,43 +1,59 @@
 html {
-    background: #000000;
+  background: #000000;
 }
 h4 {
-    color: beige;
+  color: beige;
 }
 p {
-    color: beige;
-    /*font: bolder 200px;*/
+  color: beige;
+  /*font: bolder 200px;*/
 }
 #Enemy {
-    color: rgb(121, 13, 66);
+  color: rgb(121, 13, 66);
 }
 #ZackDam {
-    color: red;
+  color: red;
 }
 #SamDam {
-    color: red;
+  color: red;
 }
 #Sams_mp {
-    color: blue;
+  color: blue;
 }
 #Zacks_mp {
-    color: blue;
+  color: blue;
 }
 #Zacks_hp {
-    color: #07d125;
+  color: #07d125;
 }
 #Sams_hp {
-    color: maroon;
+  color: maroon;
 }
 #Money {
-    color: gold;
+  color: gold;
 }
 #Enemy2 {
-    color: rgb(196, 25, 25);
+  color: rgb(196, 25, 25);
 }
 #Sams_armor {
-    color: lightblue;
+  color: lightblue;
 }
 #Zacks_armor {
-    color: lightblue;
+  color: lightblue;
+}
+#Nates_armor {
+  color: lightblue;
+  display: none;
+}
+#Nates_hp {
+  color: rgb(33, 165, 209);
+  display: none;
+}
+#Nates_mp {
+  color: blue;
+  display: none;
+}
+#NateDam {
+  color: red;
+  display: none;
 }
