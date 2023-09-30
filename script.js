@@ -96,6 +96,7 @@ function spawn(Name, HP, Mon, damage) {
   enemy_damage = damage;
   enemy_HP = HP;
   enemy_MON = Mon;
+  enemy_name = Name;
   if (enemy_HP <= 0) {
     Money += Mon;
     SamDam = default_Dam;
@@ -103,6 +104,10 @@ function spawn(Name, HP, Mon, damage) {
     ZackDamdisp.innerText = "Links Damage: " + ZackDam;
     SamDamdisp.innerText = "Phoenixs Damage: " + SamDam;
     Moneydisp.innerText = "Team Ruppees: " + Money;
+    SamDam = default_Dam;
+    ZackDam = default_Dam;
+    ZackDamdisp.innerText = "Links Damage: " + ZackDam;
+    SamDamdisp.innerText = "Phoenixs Damage: " + SamDam;
     kill("Enemy");
     //console.log("You Droped your current loot!")
     //lootdisp.innerText = loot[Math.floor(Math.random() * loot.length)]
@@ -121,6 +126,7 @@ function spawn2(Name, HP, Mon, damage) {
   enemy2_damage = damage;
   enemy2_HP = HP;
   enemy2_MON = Mon;
+  enemy2_name = Name;
   if (enemy2_HP <= 0) {
     Money += Mon;
     SamDam = default_Dam;
@@ -129,6 +135,10 @@ function spawn2(Name, HP, Mon, damage) {
     SamDamdisp.innerText = "Phoenixs Damage: " + SamDam;
     Moneydisp.innerText = "Team Ruppees: " + Money;
     kill("Enemy2");
+    SamDam = default_Dam;
+    ZackDam = default_Dam;
+    ZackDamdisp.innerText = "Links Damage: " + ZackDam;
+    SamDamdisp.innerText = "Phoenixs Damage: " + SamDam;
     //console.log("You Droped your current loot!")
     //lootdisp.innerText = loot[Math.floor(Math.random() * loot.length)]
   }
@@ -136,9 +146,65 @@ function spawn2(Name, HP, Mon, damage) {
 function kill(Type) {
   if (Type == "Enemy") {
     Enemydisp.innerText = "There is peace.";
+    loote = lootr();
+    if (loote == "red") {
+      armor("Sam", "red");
+      armor("Zack", "red");
+      console.log("red");
+    } else if (loote == "blue") {
+      armor("Sam", "blue");
+      armor("Zack", "blue");
+      console.log("blue");
+    } else if (loote == "green") {
+      armor("Sam", "green");
+      armor("Zack", "green");
+      console.log("green");
+    } else if (loote == "buff") {
+      buff("Sam");
+      buff("Zack");
+      console.log("buff");
+    } else if (loote == "revive") {
+      revive("Sam");
+      revive("Zack");
+      console.log("revive");
+    } else if (loote == "refill") {
+      Add("HP", "Sam", 10);
+      Add("HP", "Zack", 10);
+      Add("MP", "Sam", 10);
+      Add("MP", "Zack", 10);
+      console.log("refill");
+    }
   }
   if (Type == "Enemy2") {
     Enemydisp2.innerText = "There is peace.";
+    loote = lootr();
+    if (loote == "red") {
+      armor("Sam", "red");
+      armor("Zack", "red");
+      console.log("red");
+    } else if (loote == "blue") {
+      armor("Sam", "blue");
+      armor("Zack", "blue");
+      console.log("blue");
+    } else if (loote == "green") {
+      armor("Sam", "green");
+      armor("Zack", "green");
+      console.log("green");
+    } else if (loote == "buff") {
+      buff("Sam");
+      buff("Zack");
+      console.log("buff");
+    } else if (loote == "revive") {
+      revive("Sam");
+      revive("Zack");
+      console.log("revive");
+    } else if (loote == "refill") {
+      Add("HP", "Sam", 10);
+      Add("HP", "Zack", 10);
+      Add("MP", "Sam", 10);
+      Add("MP", "Zack", 10);
+      console.log("refill");
+    }
   }
 }
 function damage(Name, Val) {
@@ -260,11 +326,17 @@ function power(Name, num) {
     } else {
       damage("Enemy2", 20);
     }
-  } else if (Name == "Enemy" || Name == "Enemy2") {
+  } else if (Name == "Enemy") {
     if (num == 1) {
-      damage("Sam", 20);
+      damage("Sam", enemy_damage * 1.5);
     } else {
-      damage("Zack", 20);
+      damage("Zack", enemy_damage * 1.5);
+    }
+  } else if (Name == "Enemy2") {
+    if (num == 1) {
+      damage("Sam", enemy2_damage * 1.5);
+    } else {
+      damage("Zack", enemy2_damage * 1.5);
     }
   } else {
     console.log("error");
@@ -298,15 +370,136 @@ function armor(Name, armor) {
     }
   }
 }
-//TODO ADD PRESETS 
+function pre(Number) {
+  if (Number == "boko1") {
+    spawn("bokoblin", 30, 10, 10);
+  } else if (Number == "boko2") {
+    spawn2("bokoblin", 30, 10, 10);
+  } else if (Number == "like1") {
+    spawn("like like", 30, 10, 10);
+  } else if (Number == "like2") {
+    spawn2("like like", 30, 10, 10);
+  } else if (Number == "moblin1") {
+    spawn("moblin", 50, 10, 15);
+  } else if (Number == "moblin2") {
+    spawn2("moblin", 50, 10, 15);
+  } else if (Number == "chuchu1") {
+    spawn("chuchu", 5, 10, 5);
+  } else if (Number == "chuchu2") {
+    spawn2("chuchu", 5, 10, 5);
+  } else if (Number == "redead1") {
+    spawn("redead", 60, 100, 15);
+  } else if (Number == "redead2") {
+    spawn2("redead", 60, 100, 15);
+  } else if (Number == "gibdo1") {
+    spawn("gibdo", 65, 100, 15);
+  } else if (Number == "gibdo2") {
+    spawn2("gibdo", 65, 100, 15);
+  } else if (Number == "lizalfo1") {
+    spawn("lizalfo", 40, 30, 10);
+  } else if (Number == "lizalfo2") {
+    spawn2("lizalfo", 40, 30, 10);
+  } else if (Number == "firechuchu1") {
+    spawn("fire chuchu", 10, 10, 10);
+  } else if (Number == "firechuchu2") {
+    spawn2("fire chuchu", 10, 10, 10);
+  } else if (Number == "elecchuchu1") {
+    spawn("electric chuchu", 10, 10, 15);
+  } else if (Number == "elecchuchu2") {
+    spawn2("electric chuchu", 10, 10, 15);
+  } else if (Number == "icechuchu1") {
+    spawn("ice chuchu", 10, 10, 15);
+  } else if (Number == "icechuchu2") {
+    spawn2("ice chuchu", 10, 10, 15);
+  } else if (Number == "keese1") {
+    spawn("keese", 5, 5, 5);
+  } else if (Number == "keese2") {
+    spawn2("keese", 5, 5, 5);
+  } else if (Number == "dodongo1") {
+    spawn("dodongo", 20, 30, 10);
+  } else if (Number == "dodongo2") {
+    spawn2("dodongo", 20, 30, 10);
+  }
+}
 function revive(Name) {
   if (Name == "Sam") {
-    SamsHP = 100;
-    SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+    if (SamsHP <= 0) {
+      SamsHP = 100;
+      SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+    }
   } else if (Name == "Zack") {
-    ZacksHP = 100;
-    ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
+    if (ZacksHP <= 0) {
+      ZacksHP = 100;
+      ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
+    }
   }
+}
+function boss(Name) {
+  if (Name == "moldorm1") {
+    spawn("moldorm", 250, 300, 20);
+  } else if (Name == "moldorm2") {
+    spawn2("moldorm", 250, 300, 20);
+  } else if (Name == "shadow1") {
+    spawn("shadow link", 100, 50, 10);
+  } else if (Name == "shadow2") {
+    spawn2("shadow link", 100, 50, 10);
+  } else if (Name == "shadowp1") {
+    spawn("shadow phoenix", 100, 50, 10);
+  } else if (Name == "shadowp2") {
+    spawn2("shadow phoenix", 100, 50, 10);
+  } else if (Name == "kingd1") {
+    spawn("king dodongo", 300, 500, 30);
+  } else if (Name == "kingd2") {
+    spawn2("king dodongo", 300, 500, 30);
+  } else if (Name == "gohma1") {
+    spawn("gohma", 200, 100, 15);
+  } else if (Name == "gohma2") {
+    spawn2("gohma", 200, 100, 15);
+  } else if (Name == "bchu1") {
+    spawn("big chu chu", 200, 100, 5);
+  } else if (Name == "bchu2") {
+    spawn2("big chu chu", 200, 100, 5);
+  } else if (Name == "ganon1") {
+    spawn("ganon", 500, 1000, 50);
+  } else if (Name == "ganon2") {
+    spawn2("ganon", 500, 1000, 50);
+  }
+}
+function buff(Name) {
+  if (Name == "Sam") {
+    if (SamsMP <= 0) {
+      return "❌";
+    } else if (SamsHP <= 10) {
+      SamsMP -= 50;
+      SamsMPdisp.innerText = "Phoenixs MP: " + SamsMP;
+      SamDam += 5;
+      SamDam *= 1.5;
+      SamDamdisp.innerText = "Phoenixs Dam: " + SamDam;
+      return;
+    } else {
+      SamsMP -= 50;
+      SamsMPdisp.innerText = "Phoenixs MP: " + SamsMP;
+      SamDam += 5;
+      SamDamdisp.innerText = "Phoenixs Dam: " + SamDam;
+    }
+  } else if (Name == "Zack") {
+    if (ZacksHP <= 10) {
+      ZacksMP -= 50;
+      ZacksMPdisp.innerText = "Links MP: " + ZacksMP;
+      ZackDam += 5;
+      ZackDam *= 1.5;
+      ZackDamdisp.innerText = "Links Dam: " + ZackDam;
+    } else {
+      ZacksMP -= 50;
+      ZacksMPdisp.innerText = "Links MP: " + ZacksMP;
+      ZackDam += 5;
+      ZackDamdisp.innerText = "Links Dam: " + ZackDam;
+    }
+  }
+}
+function lootr() {
+  randloot = loot[Math.floor(Math.random() * loot.length)];
+  return randloot;
 }
 const Moneydisp = document.getElementById("Money");
 const SamsHPdisp = document.getElementById("Sams_hp");
@@ -319,6 +512,7 @@ const SamDamdisp = document.getElementById("SamDam");
 const ZackDamdisp = document.getElementById("ZackDam");
 const ZackArmordisp = document.getElementById("Zacks_armor");
 const SamArmordisp = document.getElementById("Sams_armor");
+const loot = ["red", "blue", "green", "buff", "revive", "refill"];
 let ZacksHP = 100; //HP is health
 let default_Dam = 10; //Dam is damage but this one is the default
 let ZackDam = 10; //Dam is damage
