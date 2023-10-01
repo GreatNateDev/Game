@@ -83,6 +83,16 @@ function hide(Name, Val) {
     } else {
       console.log(x);
     }
+  } else if (Name == "XP") {
+    if (Val == 1) {
+      progressElement.style.display = "block";
+      progressBarClass.style.display = "block";
+    } else if (Val == 0) {
+      progressElement.style.display = "none";
+      progressBarClass.style.display = "none";
+    } else {
+      console.log(x);
+    }
   } else {
     console.log(x);
   }
@@ -158,6 +168,7 @@ function kill(Type) {
   if (Type == "Enemy") {
     Enemydisp.innerText = "There is peace.";
     loote = lootr();
+
     if (loote == "red") {
       armor("Sam", "red");
       armor("Zack", "red");
@@ -660,8 +671,78 @@ function shop(Item) {
     console.log(x);
   }
 }
-//TODO make levels
-//TODO make upgrades for the levels
+function story(lvl) {
+  let interval;
+  if (lvl == 1) {
+    pre("chuchu1");
+    pre("keese2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        clearInterval(interval);
+        story(2);
+      }
+    }, 1000);
+  } else if (lvl == 2) {
+    pre("firechuchu1");
+    pre("icechuchu2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        clearInterval(interval);
+        story(3);
+      }
+    }, 1000);
+  } else if (lvl == 3) {
+    pre("elecchuchu1");
+    pre("boko2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        clearInterval(interval);
+        story(4);
+      }
+    }, 1000);
+  } else if (lvl == 4) {
+    pre("moblin1");
+    pre("moblin2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        console.log("win");
+      }
+    });
+  }
+}
+function xpAdd(progress) {
+  progressElement.style.width = progress + "%";
+}
+function addResult(inputAsString, output) {
+  const outputAsString =
+    output instanceof Array ? `[${output.join(", ")}]` : output.toString();
+  const inputLogElement = document.createElement("div");
+  const outputLogElement = document.createElement("div");
+
+  inputLogElement.classList.add("console-input-log");
+  outputLogElement.classList.add("console-output-log");
+
+  inputLogElement.textContent = `> ${inputAsString}`;
+  outputLogElement.textContent = outputAsString;
+}
+
+//TODO make XP work
+//TODO Add more to story
+const consoleInput = document.querySelector(".console-input");
+const progressBarClass = document.querySelector(".progress-bar");
+const progressElement = document.getElementById("progress");
 const Moneydisp = document.getElementById("Money"); //Get the Money
 const SamsHPdisp = document.getElementById("Sams_hp"); //Get the HP
 const ZacksHPdisp = document.getElementById("Zacks_hp"); //Get the HP
@@ -694,6 +775,7 @@ let enemy2_damage = 0; //Dam is damage
 let enemy_name = "None"; //Name
 let enemy2_name = "None"; //Name
 let x = "❌";
+let xp = 0;
 SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP; //HP is health
 ZacksHPdisp.innerText = "Links HP: " + ZacksHP; //HP is health
 SamsMPdisp.innerText = "Phoenixs MP: " + SamsMP; //MP is mana
@@ -705,22 +787,7 @@ SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor; //Armor
 ZackArmordisp.innerText = "Links Armor: " + Zacks_armor; //Armor
 Enemydisp.innerText = "There is peace."; //Enemy
 Enemydisp2.innerText = "There is peace."; //Enemy
-//Console copy and pasted from some yt vid so that mobile users can use this site
-const consoleInput = document.querySelector(".console-input");
-
-function addResult(inputAsString, output) {
-  const outputAsString =
-    output instanceof Array ? `[${output.join(", ")}]` : output.toString();
-  const inputLogElement = document.createElement("div");
-  const outputLogElement = document.createElement("div");
-
-  inputLogElement.classList.add("console-input-log");
-  outputLogElement.classList.add("console-output-log");
-
-  inputLogElement.textContent = `> ${inputAsString}`;
-  outputLogElement.textContent = outputAsString;
-}
-
+//MISCELLANEOUS
 consoleInput.addEventListener("keyup", (e) => {
   const code = consoleInput.value.trim();
 
@@ -738,4 +805,4 @@ consoleInput.addEventListener("keyup", (e) => {
     consoleInput.value = "";
   }
 });
-//764
+//800!
