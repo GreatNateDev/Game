@@ -12,12 +12,6 @@ function Add(Type, Name, num) {
       if (ZacksHP <= 0) {
         ZacksHPdisp.innerText = "Link died";
       }
-    } else if (Name == "Nate") {
-      NatesHP += num;
-      NatesHPdisp.innerText = "Nate HP: " + NatesHP;
-      if (NatesHP <= 0) {
-        NatesHPdisp.innerText = "Nate died";
-      }
     }
   } else if (Type == "MP") {
     if (Name == "Sam") {
@@ -631,19 +625,16 @@ function shop(Item) {
     Moneydisp.innerText = "Money: " + Money;
     armor("Sam", "red");
     armor("Zack", "red");
-    armor("Nate", "red");
   } else if (Item == "blue" && Money >= 50) {
     Money -= 50;
     Moneydisp.innerText = "Money: " + Money;
     armor("Sam", "blue");
     armor("Zack", "blue");
-    armor("Nate", "blue");
   } else if (Item == "green" && Money >= 20) {
     Money -= 20;
     Moneydisp.innerText = "Money: " + Money;
     armor("Sam", "green");
     armor("Zack", "green");
-    armor("Nate", "green");
   } else if (Item == "refill" && Money >= 100) {
     Money -= 100;
     Moneydisp.innerText = "Money: " + Money;
@@ -665,27 +656,21 @@ function shop(Item) {
     Moneydisp.innerText = "Money: " + Money;
     buff("Sam");
     buff("Zack");
-    buff("Nate");
   } else {
     console.log(x);
   }
 }
-//TODO finish adding Nate
 //TODO make levels
 //TODO make upgrades for the levels
 const Moneydisp = document.getElementById("Money"); //Get the Money
-const NatesHPdisp = document.getElementById("Nates_hp"); //Get the HP
 const SamsHPdisp = document.getElementById("Sams_hp"); //Get the HP
 const ZacksHPdisp = document.getElementById("Zacks_hp"); //Get the HP
-const NatesMPdisp = document.getElementById("Nates_mp"); //Get the MP
 const SamsMPdisp = document.getElementById("Sams_mp"); //Get the MP
 const ZacksMPdisp = document.getElementById("Zacks_mp"); //Get the MP
 const Enemydisp = document.getElementById("Enemy"); //Get the Enemy
 const Enemydisp2 = document.getElementById("Enemy2"); //Get the Enemy
-const NateDamdisp = document.getElementById("NateDam"); //Get the Dam
 const SamDamdisp = document.getElementById("SamDam"); //Get the Dam
 const ZackDamdisp = document.getElementById("ZackDam"); //Get the Dam
-const NateArmordisp = document.getElementById("Nates_armor"); //Get the Armor
 const ZackArmordisp = document.getElementById("Zacks_armor"); //Get the Armor
 const SamArmordisp = document.getElementById("Sams_armor"); //Get the Armor
 const loot = ["red", "blue", "green", "buff", "revive", "refill"]; //Get the loot
@@ -708,22 +693,14 @@ let enemy2_HP = 0; //HP is health
 let enemy2_damage = 0; //Dam is damage
 let enemy_name = "None"; //Name
 let enemy2_name = "None"; //Name
-let NateDam = 10; //Dam is damage
-let NatesHP = 100; //HP is health
-let NatesMP = 100; //MP is mana
-let Nates_armor = 0; //Armor
 let x = "❌";
-NatesHPdisp.innerText = "Nate HP: " + NatesHP; //HP is health
 SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP; //HP is health
 ZacksHPdisp.innerText = "Links HP: " + ZacksHP; //HP is health
-NatesMPdisp.innerText = "Nate MP: " + NatesMP; //MP is mana
 SamsMPdisp.innerText = "Phoenixs MP: " + SamsMP; //MP is mana
 ZacksMPdisp.innerText = "Links MP: " + ZacksMP; //MP is mana
-NateDamdisp.innerText = "Nate Damage: " + NateDam; //Dam is damage
 ZackDamdisp.innerText = "Links Damage: " + ZackDam; //Dam is damage
 SamDamdisp.innerText = "Phoenixs Damage: " + SamDam; //Dam is damage
 Moneydisp.innerText = "Team Ruppees: " + Money; //Money
-NateArmordisp.innerText = "Nates Armor: " + Nates_armor; //Armor
 SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor; //Armor
 ZackArmordisp.innerText = "Links Armor: " + Zacks_armor; //Armor
 Enemydisp.innerText = "There is peace."; //Enemy

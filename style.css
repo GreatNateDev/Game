@@ -41,19 +41,3 @@ p {
 #Zacks_armor {
   color: lightblue;
 }
-#Nates_armor {
-  color: lightblue;
-  display: none;
-}
-#Nates_hp {
-  color: rgb(33, 165, 209);
-  display: none;
-}
-#Nates_mp {
-  color: blue;
-  display: none;
-}
-#NateDam {
-  color: red;
-  display: none;
-}
