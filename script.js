@@ -389,7 +389,7 @@ function hurt(Name, who) {
       } else if (who == "Zack") {
         enemy2_HP -= ZackDam;
         spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
-        if (Enemy2_HP <= 0) {
+        if (enemy2_HP <= 0) {
           kill("Enemy2");
         }
       }
