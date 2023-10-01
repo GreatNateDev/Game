@@ -33,7 +33,7 @@ function Add(Type, Name, num) {
       Moneydisp.innerText = "Team Money: " + Money;
     }
   } else {
-    console.log("❌");
+    console.log(x);
   }
 }
 function hide(Name, Val) {
@@ -49,7 +49,7 @@ function hide(Name, Val) {
       SamDamdisp.style.display = "none";
       SamArmordisp.style.display = "none";
     } else {
-      console.log("❌");
+      console.log(x);
     }
   } else if (Name == "Zack") {
     if (Val == 1) {
@@ -63,7 +63,7 @@ function hide(Name, Val) {
       ZackDamdisp.style.display = "none";
       ZackArmordisp.style.display = "none";
     } else {
-      console.log("❌");
+      console.log(x);
     }
   } else if (Name == "Enemy") {
     if (Val == 1) {
@@ -71,7 +71,7 @@ function hide(Name, Val) {
     } else if (Val == 0) {
       Enemydisp.style.display = "none";
     } else {
-      console.log("❌");
+      console.log(x);
     }
   } else if (Name == "Enemy2") {
     if (Val == 1) {
@@ -79,7 +79,7 @@ function hide(Name, Val) {
     } else if (Val == 0) {
       Enemydisp2.style.display = "none";
     } else {
-      console.log("❌");
+      console.log(x);
     }
   } else if (Name == "Money") {
     if (Val == 1) {
@@ -87,10 +87,10 @@ function hide(Name, Val) {
     } else if (Val == 0) {
       Moneydisp.style.display = "none";
     } else {
-      console.log("❌");
+      console.log(x);
     }
   } else {
-    console.log("❌");
+    console.log(x);
   }
 }
 function spawn(Name, HP, Mon, damage) {
@@ -237,80 +237,76 @@ function damage(Name, Val) {
     enemy2_HP -= Val;
     spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
   } else {
-    console.log("❌");
+    console.log(x);
   }
 }
 function hurt(Name, who) {
   if (Name == "Sam") {
-    if (Sams_armor > 0) {
-      if (who == "Enemy") {
+    if (who == "Enemy") {
+      if (Sams_armor > 0) {
         Sams_armor -= enemy_damage;
-        SamArmordisp.innerText = "Phoenix's Armor: " + Sams_armor;
+        SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
         if (Sams_armor <= 0) {
           SamsHP += Sams_armor;
-          SamsHPdisp.innerText = "Phoenix's HP: " + SamsHP;
+          SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
           Sams_armor = 0;
-          SamArmordisp.innerText = "Phoenix's Armor: " + Sams_armor;
+          SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+        } else {
+          return 0;
         }
-        if (SamsHP <= 0) {
-          SamsHPdisp.innerText = "Phoenix died";
-        }
-      } else if (who == "Enemy2") {
-        Sams_armor -= enemy2_damage;
-        SamArmordisp.innerText = "Phoenix's Armor: " + Sams_armor;
-        if (SamsHP <= 0) {
-          SamsHPdisp.innerText = "Phoenix died";
-        }
-      }
-    } else {
-      if (who == "Enemy") {
+      } else {
         SamsHP -= enemy_damage;
-        SamsHPdisp.innerText = "Phoenix's HP: " + SamsHP;
-        if (SamsHP <= 0) {
-          SamsHPdisp.innerText = "Phoenix died";
+        SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+      }
+    } else if (who == "Enemy2") {
+      if (Sams_armor > 0) {
+        Sams_armor -= enemy_damage;
+        SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+        if (Sams_armor <= 0) {
+          SamsHP += Sams_armor;
+          SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+          Sams_armor = 0;
+          SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+        } else {
+          return 0;
         }
-      } else if (who == "Enemy2") {
-        SamsHP -= enemy2_damage;
-        SamsHPdisp.innerText = "Phoenix's HP: " + SamsHP;
-        if (SamsHP <= 0) {
-          SamsHPdisp.innerText = "Phoenix died";
-        }
+      } else {
+        SamsHP -= enemy_damage;
+        SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
       }
     }
   } else if (Name == "Zack") {
-    if (Zacks_armor > 0) {
-      if (who == "Enemy") {
+    if (who == "Enemy") {
+      if (Zacks_armor > 0) {
         Zacks_armor -= enemy_damage;
-        ZackArmordisp.innerText = "Link's Armor: " + Zacks_armor;
-        if (Sams_armor <= 0) {
-          SamsHP += Sams_armor;
-          SamsHPdisp.innerText = "Phoenix's HP: " + SamsHP;
-          Sams_armor = 0;
-          SamArmordisp.innerText = "Phoenix's Armor: " + Sams_armor;
+        ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+        if (Zacks_armor <= 0) {
+          ZacksHP += Zacks_armor;
+          ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
+          Zacks_armor = 0;
+          ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+        } else {
+          return 0;
         }
-        if (ZacksHP <= 0) {
-          ZacksHPdisp.innerText = "Link died";
-        }
-      } else if (who == "Enemy2") {
-        Zacks_armor -= enemy2_damage;
-        ZackArmordisp.innerText = "Link's Armor: " + Zacks_armor;
-        if (ZacksHP <= 0) {
-          ZacksHPdisp.innerText = "Link died";
-        }
-      }
-    } else {
-      if (who == "Enemy") {
+      } else {
         ZacksHP -= enemy_damage;
-        ZacksHPdisp.innerText = "Link's HP: " + ZacksHP;
-        if (ZacksHP <= 0) {
-          ZacksHPdisp.innerText = "Link died";
+        ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
+      }
+    } else if (who == "Enemy2") {
+      if (Zacks_armor > 0) {
+        Zacks_armor -= enemy_damage;
+        ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+        if (Zacks_armor <= 0) {
+          ZacksHP += Zacks_armor;
+          ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
+          Zacks_armor = 0;
+          ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+        } else {
+          return 0;
         }
-      } else if (who == "Enemy2") {
-        ZacksHP -= enemy2_damage;
-        ZacksHPdisp.innerText = "Link's HP: " + ZacksHP;
-        if (ZacksHP <= 0) {
-          ZacksHPdisp.innerText = "Link died";
-        }
+      } else {
+        ZacksHP -= enemy_damage;
+        ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
       }
     }
   } else if (Name == "Enemy") {
@@ -331,6 +327,7 @@ function hurt(Name, who) {
     }
   }
 }
+
 function power(Name, num) {
   if (Name == "Sam") {
     SamsMP -= 10;
@@ -349,7 +346,7 @@ function power(Name, num) {
       damage("Enemy2", 20);
     }
   } else if (Name == "Enemy") {
-    if (num == 1 ) {
+    if (num == 1) {
       if (Sams_armor > 0) {
         Sams_armor -= enemy_damage * 1.5;
         SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
@@ -357,9 +354,7 @@ function power(Name, num) {
         SamsHP -= enemy_damage * 1.5;
         SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
       }
-      
-    }
-    else if (num == 2) {
+    } else if (num == 2) {
       if (Zacks_armor > 0) {
         Zacks_armor -= enemy_damage * 1.5;
         ZackArmordisp.innerText = "Link's Armor: " + Zacks_armor;
@@ -368,7 +363,6 @@ function power(Name, num) {
         ZacksHPdisp.innerText = "Link's HP: " + ZacksHP;
       }
     }
-    
   } else if (Name == "Enemy2") {
     if (num == 1) {
       if (Sams_armor > 0) {
@@ -387,9 +381,8 @@ function power(Name, num) {
         ZacksHPdisp.innerText = "Link's HP: " + ZacksHP;
       }
     }
-    }
-  else {
-    console.log("❌");
+  } else {
+    console.log(x);
   }
 }
 function armor(Name, armor) {
@@ -517,7 +510,7 @@ function boss(Name) {
 }
 function buff(Name) {
   if (Name == "Sam") {
-     if ((SamsHP <= 10 && enemy2_HP <= 1) || enemy_HP <= 1) {
+    if ((SamsHP <= 10 && enemy2_HP <= 1) || enemy_HP <= 1) {
       SamDam += 5;
       SamDam *= 1.5;
       SamDamdisp.innerText = "Phoenixs Dam: " + SamDam;
@@ -545,9 +538,19 @@ function lootr() {
   randloot = loot[Math.floor(Math.random() * loot.length)];
   return randloot;
 }
+function resetarmor(Name) {
+  if (Name == "Sam") {
+    Sams_armor = 0;
+    SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+  } else if (Name == "Zack") {
+    Zacks_armor = 0;
+    ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+  } else {
+    console.log(x);
+  }
+}
 //TODO finish adding Nate
 //TODO add blocking features
-//fix armor being -  
 const Moneydisp = document.getElementById("Money"); //Get the Money
 const NatesHPdisp = document.getElementById("Nates_hp"); //Get the HP
 const SamsHPdisp = document.getElementById("Sams_hp"); //Get the HP
@@ -586,6 +589,7 @@ let NateDam = 10; //Dam is damage
 let NatesHP = 100; //HP is health
 let NatesMP = 100; //MP is mana
 let Nates_armor = 0; //Armor
+let x = "❌";
 NatesHPdisp.innerText = "Nate HP: " + NatesHP; //HP is health
 SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP; //HP is health
 ZacksHPdisp.innerText = "Links HP: " + ZacksHP; //HP is health
@@ -634,4 +638,4 @@ consoleInput.addEventListener("keyup", (e) => {
     consoleInput.value = "";
   }
 });
-//still has bugs but shipping to git hub
+//641!
