@@ -164,8 +164,7 @@ function kill(Type) {
   ) {
     SamDam = default_Dam;
     ZackDam = default_Dam;
-  }
-  if (Type == "Enemy") {
+  } else if (Type == "Enemy") {
     Enemydisp.innerText = "There is peace.";
     loote = lootr();
 
@@ -173,28 +172,34 @@ function kill(Type) {
       armor("Sam", "red");
       armor("Zack", "red");
       console.log("red");
+      return 1;
     } else if (loote == "blue") {
       armor("Sam", "blue");
       armor("Zack", "blue");
       console.log("blue");
+      return 1;
     } else if (loote == "green") {
       armor("Sam", "green");
       armor("Zack", "green");
       console.log("green");
+      return 1;
     } else if (loote == "buff") {
       buff("Sam");
       buff("Zack");
       console.log("buff");
+      return 1;
     } else if (loote == "revive") {
       revive("Sam");
       revive("Zack");
       console.log("revive");
+      return 1;
     } else if (loote == "refill") {
       Add("HP", "Sam", 10);
       Add("HP", "Zack", 10);
       Add("MP", "Sam", 10);
       Add("MP", "Zack", 10);
       console.log("refilled");
+      return 1;
     }
   } else if (Type == "Enemy2") {
     Enemydisp2.innerText = "There is peace.";
@@ -203,28 +208,34 @@ function kill(Type) {
       armor("Sam", "red");
       armor("Zack", "red");
       console.log("red");
+      return 1;
     } else if (loote == "blue") {
       armor("Sam", "blue");
       armor("Zack", "blue");
       console.log("blue");
+      return 1;
     } else if (loote == "green") {
       armor("Sam", "green");
       armor("Zack", "green");
       console.log("green");
+      return 1;
     } else if (loote == "buff") {
       buff("Sam");
       buff("Zack");
       console.log("buff");
+      return 1;
     } else if (loote == "revive") {
       revive("Sam");
       revive("Zack");
       console.log("revive");
+      return 1;
     } else if (loote == "refill") {
       Add("HP", "Sam", 10);
       Add("HP", "Zack", 10);
       Add("MP", "Sam", 10);
       Add("MP", "Zack", 10);
       console.log("refill");
+      return 1;
     }
   }
 }
@@ -362,15 +373,17 @@ function hurt(Name, who) {
     } else if (blocko == 0) {
       if (who == "Sam") {
         enemy_HP -= SamDam;
-        spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
         if (enemy_HP <= 0) {
           kill("Enemy");
+        } else {
+          spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
         }
       } else if (who == "Zack") {
         enemy_HP -= ZackDam;
-        spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
         if (enemy_HP <= 0) {
           kill("Enemy");
+        } else {
+          spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
         }
       }
     }
@@ -381,15 +394,17 @@ function hurt(Name, who) {
     } else if (blocko == 0) {
       if (who == "Sam") {
         enemy2_HP -= SamDam;
-        spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
         if (Enemy2_HP <= 0) {
           kill("Enemy2");
+        } else {
+          spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
         }
       } else if (who == "Zack") {
         enemy2_HP -= ZackDam;
-        spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
         if (enemy2_HP <= 0) {
           kill("Enemy2");
+        } else {
+          spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
         }
       }
     }
