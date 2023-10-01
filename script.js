@@ -241,8 +241,14 @@ function damage(Name, Val) {
   }
 }
 function hurt(Name, who) {
+  let blocko = block()
   if (Name == "Sam") {
+    if (blocko == 1) {console.log("blocked");
+      return 1;
+    }
+    else if(blocko == 0) {
     if (who == "Enemy") {
+      
       if (Sams_armor > 0) {
         Sams_armor -= enemy_damage;
         SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
@@ -286,9 +292,15 @@ function hurt(Name, who) {
           dead("Sam");
         }
       }
-    }
+    }}
   } else if (Name == "Zack") {
+    if (blocko == 1) {console.log("blocked");
+      return 1;}
+    else if(blocko == 0) {
     if (who == "Enemy") {
+      
+      
+    
       if (Zacks_armor > 0) {
         Zacks_armor -= enemy_damage;
         ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
@@ -332,8 +344,11 @@ function hurt(Name, who) {
           dead("Zack");
         }
       }
-    }
+    }}
   } else if (Name == "Enemy") {
+    if (blocko == 1) {console.log("blocked");
+  return 1;}
+    else if(blocko == 0) {
     if (who == "Sam") {
       enemy_HP -= SamDam;
       spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
@@ -346,8 +361,11 @@ function hurt(Name, who) {
       if (Enemy_HP <= 0) {
         kill("Enemy");
       }
-    }
+    }}
   } else if (Name == "Enemy2") {
+    if (blocko == 1) {console.log("blocked");
+  return 1;} 
+    else if(blocko == 0) {
     if (who == "Sam") {
       enemy2_HP -= SamDam;
       spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
@@ -360,7 +378,7 @@ function hurt(Name, who) {
       if (Enemy2_HP <= 0) {
         kill("Enemy2");
       }
-    }
+    }}
   }
 }
 function dead(Name) {
@@ -582,6 +600,10 @@ function lootr() {
   randloot = loot[Math.floor(Math.random() * loot.length)];
   return randloot;
 }
+function block() {
+  blocked = blocke[Math.floor(Math.random() * blocke.length)];
+  return blocked;
+}
 function resetarmor(Name) {
   if (Name == "Sam") {
     Sams_armor = 0;
@@ -594,7 +616,6 @@ function resetarmor(Name) {
   }
 }
 //TODO finish adding Nate
-//TODO add blocking features
 const Moneydisp = document.getElementById("Money"); //Get the Money
 const NatesHPdisp = document.getElementById("Nates_hp"); //Get the HP
 const SamsHPdisp = document.getElementById("Sams_hp"); //Get the HP
@@ -611,6 +632,7 @@ const NateArmordisp = document.getElementById("Nates_armor"); //Get the Armor
 const ZackArmordisp = document.getElementById("Zacks_armor"); //Get the Armor
 const SamArmordisp = document.getElementById("Sams_armor"); //Get the Armor
 const loot = ["red", "blue", "green", "buff", "revive", "refill"]; //Get the loot
+const blocke = [0,0,0,0,0,0,0,1,1,1]
 let ZacksHP = 100; //HP is health
 let default_Dam = 10; //Dam is damage but this one is the default
 let ZackDam = 10; //Dam is damage
@@ -682,4 +704,4 @@ consoleInput.addEventListener("keyup", (e) => {
     consoleInput.value = "";
   }
 });
-//685!
+//707!
