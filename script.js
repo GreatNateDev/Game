@@ -196,8 +196,7 @@ function kill(Type) {
       Add("MP", "Zack", 10);
       console.log("refilled");
     }
-  }
-  if (Type == "Enemy2") {
+  } else if (Type == "Enemy2") {
     Enemydisp2.innerText = "There is peace.";
     loote = lootr();
     if (loote == "red") {
