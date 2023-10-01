@@ -241,144 +241,147 @@ function damage(Name, Val) {
   }
 }
 function hurt(Name, who) {
-  let blocko = block()
+  let blocko = block();
   if (Name == "Sam") {
-    if (blocko == 1) {console.log("blocked");
+    if (blocko == 1) {
+      console.log("blocked");
       return 1;
+    } else if (blocko == 0) {
+      if (who == "Enemy") {
+        if (Sams_armor > 0) {
+          Sams_armor -= enemy_damage;
+          SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+          if (Sams_armor <= 0) {
+            SamsHP += Sams_armor;
+            SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+            Sams_armor = 0;
+            SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+            if (SamsHP <= 0) {
+              dead("Sam");
+            }
+          } else {
+            return 0;
+          }
+        } else {
+          SamsHP -= enemy_damage;
+          SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+          if (SamsHP <= 0) {
+            dead("Sam");
+          }
+        }
+      } else if (who == "Enemy2") {
+        if (Sams_armor > 0) {
+          Sams_armor -= enemy_damage;
+          SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+          if (Sams_armor <= 0) {
+            SamsHP += Sams_armor;
+            SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+            Sams_armor = 0;
+            SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+            if (SamsHP <= 0) {
+              dead("Sam");
+            }
+          } else {
+            return 0;
+          }
+        } else {
+          SamsHP -= enemy_damage;
+          SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+          if (SamsHP <= 0) {
+            dead("Sam");
+          }
+        }
+      }
     }
-    else if(blocko == 0) {
-    if (who == "Enemy") {
-      
-      if (Sams_armor > 0) {
-        Sams_armor -= enemy_damage;
-        SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
-        if (Sams_armor <= 0) {
-          SamsHP += Sams_armor;
-          SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
-          Sams_armor = 0;
-          SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
-          if (SamsHP <= 0) {
-            dead("Sam");
-          }
-        } else {
-          return 0;
-        }
-      } else {
-        SamsHP -= enemy_damage;
-        SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
-        if (SamsHP <= 0) {
-          dead("Sam");
-        }
-      }
-    } else if (who == "Enemy2") {
-      if (Sams_armor > 0) {
-        Sams_armor -= enemy_damage;
-        SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
-        if (Sams_armor <= 0) {
-          SamsHP += Sams_armor;
-          SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
-          Sams_armor = 0;
-          SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
-          if (SamsHP <= 0) {
-            dead("Sam");
-          }
-        } else {
-          return 0;
-        }
-      } else {
-        SamsHP -= enemy_damage;
-        SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
-        if (SamsHP <= 0) {
-          dead("Sam");
-        }
-      }
-    }}
   } else if (Name == "Zack") {
-    if (blocko == 1) {console.log("blocked");
-      return 1;}
-    else if(blocko == 0) {
-    if (who == "Enemy") {
-      
-      
-    
-      if (Zacks_armor > 0) {
-        Zacks_armor -= enemy_damage;
-        ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
-        if (Zacks_armor <= 0) {
-          ZacksHP += Zacks_armor;
-          ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
-          Zacks_armor = 0;
+    if (blocko == 1) {
+      console.log("blocked");
+      return 1;
+    } else if (blocko == 0) {
+      if (who == "Enemy") {
+        if (Zacks_armor > 0) {
+          Zacks_armor -= enemy_damage;
           ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+          if (Zacks_armor <= 0) {
+            ZacksHP += Zacks_armor;
+            ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
+            Zacks_armor = 0;
+            ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+            if (ZacksHP <= 0) {
+              dead("Zack");
+            }
+          } else {
+            return 0;
+          }
+        } else {
+          ZacksHP -= enemy_damage;
+          ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
           if (ZacksHP <= 0) {
             dead("Zack");
           }
-        } else {
-          return 0;
         }
-      } else {
-        ZacksHP -= enemy_damage;
-        ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
-        if (ZacksHP <= 0) {
-          dead("Zack");
-        }
-      }
-    } else if (who == "Enemy2") {
-      if (Zacks_armor > 0) {
-        Zacks_armor -= enemy_damage;
-        ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
-        if (Zacks_armor <= 0) {
-          ZacksHP += Zacks_armor;
-          ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
-          Zacks_armor = 0;
+      } else if (who == "Enemy2") {
+        if (Zacks_armor > 0) {
+          Zacks_armor -= enemy_damage;
           ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+          if (Zacks_armor <= 0) {
+            ZacksHP += Zacks_armor;
+            ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
+            Zacks_armor = 0;
+            ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+            if (ZacksHP <= 0) {
+              dead("Zack");
+            }
+          } else {
+            return 0;
+          }
+        } else {
+          ZacksHP -= enemy_damage;
+          ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
           if (ZacksHP <= 0) {
             dead("Zack");
           }
-        } else {
-          return 0;
-        }
-      } else {
-        ZacksHP -= enemy_damage;
-        ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
-        if (ZacksHP <= 0) {
-          dead("Zack");
         }
       }
-    }}
+    }
   } else if (Name == "Enemy") {
-    if (blocko == 1) {console.log("blocked");
-  return 1;}
-    else if(blocko == 0) {
-    if (who == "Sam") {
-      enemy_HP -= SamDam;
-      spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
-      if (enemy_HP <= 0) {
-        kill("Enemy");
+    if (blocko == 1) {
+      console.log("blocked");
+      return 1;
+    } else if (blocko == 0) {
+      if (who == "Sam") {
+        enemy_HP -= SamDam;
+        spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
+        if (enemy_HP <= 0) {
+          kill("Enemy");
+        }
+      } else if (who == "Zack") {
+        enemy_HP -= ZackDam;
+        spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
+        if (Enemy_HP <= 0) {
+          kill("Enemy");
+        }
       }
-    } else if (who == "Zack") {
-      enemy_HP -= ZackDam;
-      spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
-      if (Enemy_HP <= 0) {
-        kill("Enemy");
-      }
-    }}
+    }
   } else if (Name == "Enemy2") {
-    if (blocko == 1) {console.log("blocked");
-  return 1;} 
-    else if(blocko == 0) {
-    if (who == "Sam") {
-      enemy2_HP -= SamDam;
-      spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
-      if (Enemy2_HP <= 0) {
-        kill("Enemy2");
+    if (blocko == 1) {
+      console.log("blocked");
+      return 1;
+    } else if (blocko == 0) {
+      if (who == "Sam") {
+        enemy2_HP -= SamDam;
+        spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
+        if (Enemy2_HP <= 0) {
+          kill("Enemy2");
+        }
+      } else if (who == "Zack") {
+        enemy2_HP -= ZackDam;
+        spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
+        if (Enemy2_HP <= 0) {
+          kill("Enemy2");
+        }
       }
-    } else if (who == "Zack") {
-      enemy2_HP -= ZackDam;
-      spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
-      if (Enemy2_HP <= 0) {
-        kill("Enemy2");
-      }
-    }}
+    }
   }
 }
 function dead(Name) {
@@ -632,7 +635,7 @@ const NateArmordisp = document.getElementById("Nates_armor"); //Get the Armor
 const ZackArmordisp = document.getElementById("Zacks_armor"); //Get the Armor
 const SamArmordisp = document.getElementById("Sams_armor"); //Get the Armor
 const loot = ["red", "blue", "green", "buff", "revive", "refill"]; //Get the loot
-const blocke = [0,0,0,0,0,0,0,1,1,1]
+const blocke = [0, 0, 0, 0, 0, 0, 0, 1, 1, 1];
 let ZacksHP = 100; //HP is health
 let default_Dam = 10; //Dam is damage but this one is the default
 let ZackDam = 10; //Dam is damage
@@ -704,4 +707,4 @@ consoleInput.addEventListener("keyup", (e) => {
     consoleInput.value = "";
   }
 });
-//707!
+//710
