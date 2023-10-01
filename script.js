@@ -154,6 +154,13 @@ function spawn2(Name, HP, Mon, damage) {
   }
 }
 function kill(Type) {
+  if (
+    Enemydisp.innerText == "There is peace." &&
+    Enemydisp2.innerText == "There is peace."
+  ) {
+    SamDam = default_Dam;
+    ZackDam = default_Dam;
+  }
   if (Type == "Enemy") {
     Enemydisp.innerText = "There is peace.";
     loote = lootr();
@@ -182,7 +189,7 @@ function kill(Type) {
       Add("HP", "Zack", 10);
       Add("MP", "Sam", 10);
       Add("MP", "Zack", 10);
-      console.log("refill");
+      console.log("refilled");
     }
   }
   if (Type == "Enemy2") {
@@ -618,7 +625,54 @@ function resetarmor(Name) {
     console.log(x);
   }
 }
+function shop(Item) {
+  if (Item == "red" && Money >= 100) {
+    Money -= 100;
+    Moneydisp.innerText = "Money: " + Money;
+    armor("Sam", "red");
+    armor("Zack", "red");
+    armor("Nate", "red");
+  } else if (Item == "blue" && Money >= 50) {
+    Money -= 50;
+    Moneydisp.innerText = "Money: " + Money;
+    armor("Sam", "blue");
+    armor("Zack", "blue");
+    armor("Nate", "blue");
+  } else if (Item == "green" && Money >= 20) {
+    Money -= 20;
+    Moneydisp.innerText = "Money: " + Money;
+    armor("Sam", "green");
+    armor("Zack", "green");
+    armor("Nate", "green");
+  } else if (Item == "refill" && Money >= 100) {
+    Money -= 100;
+    Moneydisp.innerText = "Money: " + Money;
+    Add("HP", "Sam", 10);
+    Add("HP", "Zack", 10);
+    Add("MP", "Sam", 10);
+    Add("MP", "Zack", 10);
+    console.log("refilled");
+  } else if (Item == "PERM_DMG_BOOST" && Money >= 1000) {
+    Money -= 1000;
+    Moneydisp.innerText = "Money: " + Money;
+    default_Dam += 5;
+  } else if (Item == "list") {
+    console.log(
+      "red:100,green:20,blue:50,refill:100,PERM_DMG_BOOST:1000,buff:200"
+    );
+  } else if (Item == "buff" && Money >= 200) {
+    Money -= 200;
+    Moneydisp.innerText = "Money: " + Money;
+    buff("Sam");
+    buff("Zack");
+    buff("Nate");
+  } else {
+    console.log(x);
+  }
+}
 //TODO finish adding Nate
+//TODO make levels
+//TODO make upgrades for the levels
 const Moneydisp = document.getElementById("Money"); //Get the Money
 const NatesHPdisp = document.getElementById("Nates_hp"); //Get the HP
 const SamsHPdisp = document.getElementById("Sams_hp"); //Get the HP
@@ -707,4 +761,4 @@ consoleInput.addEventListener("keyup", (e) => {
     consoleInput.value = "";
   }
 });
-//710
+//764
