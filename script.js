@@ -251,12 +251,18 @@ function hurt(Name, who) {
           SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
           Sams_armor = 0;
           SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+          if (SamsHP <= 0) {
+            dead("Sam");
+          }
         } else {
           return 0;
         }
       } else {
         SamsHP -= enemy_damage;
         SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+        if (SamsHP <= 0) {
+          dead("Sam");
+        }
       }
     } else if (who == "Enemy2") {
       if (Sams_armor > 0) {
@@ -267,12 +273,18 @@ function hurt(Name, who) {
           SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
           Sams_armor = 0;
           SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor;
+          if (SamsHP <= 0) {
+            dead("Sam");
+          }
         } else {
           return 0;
         }
       } else {
         SamsHP -= enemy_damage;
         SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP;
+        if (SamsHP <= 0) {
+          dead("Sam");
+        }
       }
     }
   } else if (Name == "Zack") {
@@ -285,12 +297,18 @@ function hurt(Name, who) {
           ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
           Zacks_armor = 0;
           ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+          if (ZacksHP <= 0) {
+            dead("Zack");
+          }
         } else {
           return 0;
         }
       } else {
         ZacksHP -= enemy_damage;
         ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
+        if (ZacksHP <= 0) {
+          dead("Zack");
+        }
       }
     } else if (who == "Enemy2") {
       if (Zacks_armor > 0) {
@@ -301,33 +319,59 @@ function hurt(Name, who) {
           ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
           Zacks_armor = 0;
           ZackArmordisp.innerText = "Links Armor: " + Zacks_armor;
+          if (ZacksHP <= 0) {
+            dead("Zack");
+          }
         } else {
           return 0;
         }
       } else {
         ZacksHP -= enemy_damage;
         ZacksHPdisp.innerText = "Links HP: " + ZacksHP;
+        if (ZacksHP <= 0) {
+          dead("Zack");
+        }
       }
     }
   } else if (Name == "Enemy") {
     if (who == "Sam") {
       enemy_HP -= SamDam;
       spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
+      if (enemy_HP <= 0) {
+        kill("Enemy");
+      }
     } else if (who == "Zack") {
       enemy_HP -= ZackDam;
       spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
+      if (Enemy_HP <= 0) {
+        kill("Enemy");
+      }
     }
   } else if (Name == "Enemy2") {
     if (who == "Sam") {
       enemy2_HP -= SamDam;
       spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
+      if (Enemy2_HP <= 0) {
+        kill("Enemy2");
+      }
     } else if (who == "Zack") {
       enemy2_HP -= ZackDam;
       spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
+      if (Enemy2_HP <= 0) {
+        kill("Enemy2");
+      }
     }
   }
 }
-
+function dead(Name) {
+  if (Name == "Sam") {
+    SamsHP = 0;
+    SamsHPdisp.innerText = "Phoenix died!";
+  } else if (Name == "Zack") {
+    ZacksHP = 0;
+    ZacksHPdisp.innerText = "Link died!";
+  }
+}
 function power(Name, num) {
   if (Name == "Sam") {
     SamsMP -= 10;
@@ -638,4 +682,4 @@ consoleInput.addEventListener("keyup", (e) => {
     consoleInput.value = "";
   }
 });
-//641!
+//685!
