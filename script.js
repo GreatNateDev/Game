@@ -672,6 +672,8 @@ function boss(Name) {
     spawn("ganon", 500, 1000, 50);
   } else if (Name == "ganon2") {
     spawn2("ganon", 500, 1000, 50);
+  } else if (Name == "nate") {
+    spawn2("nate", 1000, 10000, 100);
   }
 }
 function buff(Name) {
@@ -757,9 +759,9 @@ function shop(Item) {
     console.log(x);
   }
 }
-function story(lvl) {
+function story(lvlx) {
   let interval;
-  if (lvl == 1) {
+  if (lvlx == 1) {
     pre("chuchu1");
     pre("keese2");
     interval = setInterval(() => {
@@ -771,7 +773,7 @@ function story(lvl) {
         story(2);
       }
     }, 1000);
-  } else if (lvl == 2) {
+  } else if (lvlx == 2) {
     pre("firechuchu1");
     pre("icechuchu2");
     interval = setInterval(() => {
@@ -783,7 +785,7 @@ function story(lvl) {
         story(3);
       }
     }, 1000);
-  } else if (lvl == 3) {
+  } else if (lvlx == 3) {
     pre("elecchuchu1");
     pre("boko2");
     interval = setInterval(() => {
@@ -795,9 +797,97 @@ function story(lvl) {
         story(4);
       }
     }, 1000);
-  } else if (lvl == 4) {
+  } else if (lvlx == 4) {
     pre("moblin1");
     pre("moblin2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        console.log("win");
+      }
+    });
+  } else if (lvlx == 5) {
+    pre("redead1");
+    pre("redead2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        console.log("win");
+      }
+    });
+  } else if (lvlx == 6) {
+    pre("dodongo1");
+    pre("dodongo2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        console.log("win");
+      }
+    });
+  } else if (lvlx == 7) {
+    boss("shadow1");
+    boss("shawdowp2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        console.log("win");
+      }
+    });
+  } else if (lvlx == 8) {
+    boss("bchu1");
+    boss("bchu2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        console.log("win");
+      }
+    });
+  } else if (lvlx == 9) {
+    boss("gohmah1");
+    boss("gohmah2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        console.log("win");
+      }
+    });
+  } else if (lvlx == 10) {
+    boss("moldorm1");
+    boss("moldorm2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        console.log("win");
+      }
+    });
+  } else if (lvlx == 11) {
+    boss("kingd1");
+    boss("kingd2");
+    interval = setInterval(() => {
+      if (
+        Enemydisp.innerText == "There is peace." &&
+        Enemydisp2.innerText == "There is peace."
+      ) {
+        console.log("win");
+      }
+    });
+  } else if (lvlx == 12) {
+    boss("ganon1");
+    boss("nate");
     interval = setInterval(() => {
       if (
         Enemydisp.innerText == "There is peace." &&
@@ -828,7 +918,6 @@ function addResult(inputAsString, output) {
   inputLogElement.textContent = `> ${inputAsString}`;
   outputLogElement.textContent = outputAsString;
 }
-//TODO Add more to story
 const lvldisp = document.getElementById("lvldisp");
 const consoleInput = document.querySelector(".console-input");
 const progressBarClass = document.querySelector(".progress-bar");
@@ -898,5 +987,14 @@ consoleInput.addEventListener("keyup", (e) => {
     consoleInput.value = "";
   }
 });
-
-//900!!!
+//This long
+//And its done
+//thank you guys
+//and my bro and sister
+//for getting me through 3 days of coding
+//to finish this
+//and with that
+//this
+//is
+//the end
+//1000 LINES BABY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
