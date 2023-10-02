@@ -11,3 +11,4 @@ they love it alot and i hope you find it interesting at least lol
 finish wiki
 fix power system
 fix leveling up system
+make block a 10% chance
