@@ -162,13 +162,75 @@ function kill(Type) {
     Enemydisp.innerText == "There is peace." &&
     Enemydisp2.innerText == "There is peace."
   ) {
+    if (Type == "Enemy") {
+      Money += enemy_MON;
+      Moneydisp.innerText = "Team Ruppees: " + Money;
+    } else if (Type == "Enemy2") {
+      Money += enemy2_MON;
+      Moneydisp.innerText = "Team Ruppees: " + Money;
+    }
+    SamDam = default_Dam;
     SamDam = default_Dam;
     ZackDam = default_Dam;
-  } else if (Type == "Enemy") {
-    Enemydisp.innerText = "There is peace.";
+    ZackDamdisp.innerText = "Links Damage: " + ZackDam;
+    SamDamdisp.innerText = "Phoenixs Damage: " + SamDam;
     loote = lootr();
-
-    if (loote == "red") {
+    xpAdd(20);
+    if (xp == "100%") {
+      lvl++;
+      lvldisp.innerText = "Team Level: " + lvl;
+      default_Dam += 2;
+      SamDam = default_Dam;
+      ZackDam = default_Dam;
+      ZackDamdisp.innerText = "Links Damage: " + ZackDam;
+      SamDamdisp.innerText = "Phoenixs Damage: " + SamDam;
+      progressElement.style.width = "0%";
+    } else if (loote == "red") {
+      armor("Sam", "red");
+      armor("Zack", "red");
+      console.log("red");
+      return 1;
+    } else if (loote == "blue") {
+      armor("Sam", "blue");
+      armor("Zack", "blue");
+      console.log("blue");
+      return 1;
+    } else if (loote == "green") {
+      armor("Sam", "green");
+      armor("Zack", "green");
+      console.log("green");
+      return 1;
+    } else if (loote == "buff") {
+      buff("Sam");
+      buff("Zack");
+      console.log("buff");
+      return 1;
+    } else if (loote == "revive") {
+      revive("Sam");
+      revive("Zack");
+      console.log("revive");
+      return 1;
+    } else if (loote == "refill") {
+      Add("HP", "Sam", 10);
+      Add("HP", "Zack", 10);
+      Add("MP", "Sam", 10);
+      Add("MP", "Zack", 10);
+      console.log("refilled");
+      return 1;
+    }
+  } else if (Type == "Enemy") {
+    loote = lootr();
+    xpAdd(20);
+    if (xp == "100%") {
+      lvl++;
+      lvldisp.innerText = "Team Level: " + lvl;
+      default_Dam += 2;
+      SamDam = default_Dam;
+      ZackDam = default_Dam;
+      ZackDamdisp.innerText = "Links Damage: " + ZackDam;
+      SamDamdisp.innerText = "Phoenixs Damage: " + SamDam;
+      progressElement.style.width = "0%";
+    } else if (loote == "red") {
       armor("Sam", "red");
       armor("Zack", "red");
       console.log("red");
@@ -202,9 +264,18 @@ function kill(Type) {
       return 1;
     }
   } else if (Type == "Enemy2") {
-    Enemydisp2.innerText = "There is peace.";
     loote = lootr();
-    if (loote == "red") {
+    xpAdd(20);
+    if (xp >= "100") {
+      lvl++;
+      lvldisp.innerText = "Team Level: " + lvl;
+      default_Dam += 2;
+      SamDam = default_Dam;
+      ZackDam = default_Dam;
+      ZackDamdisp.innerText = "Links Damage: " + ZackDam;
+      SamDamdisp.innerText = "Phoenixs Damage: " + SamDam;
+      progressElement.style.width = "0%";
+    } else if (loote == "red") {
       armor("Sam", "red");
       armor("Zack", "red");
       console.log("red");
@@ -374,6 +445,7 @@ function hurt(Name, who) {
       if (who == "Sam") {
         enemy_HP -= SamDam;
         if (enemy_HP <= 0) {
+          Enemydisp.innerText = "There is peace.";
           kill("Enemy");
         } else {
           spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
@@ -381,6 +453,7 @@ function hurt(Name, who) {
       } else if (who == "Zack") {
         enemy_HP -= ZackDam;
         if (enemy_HP <= 0) {
+          Enemydisp.innerText = "There is peace.";
           kill("Enemy");
         } else {
           spawn(enemy_name, enemy_HP, enemy_MON, enemy_damage);
@@ -394,7 +467,8 @@ function hurt(Name, who) {
     } else if (blocko == 0) {
       if (who == "Sam") {
         enemy2_HP -= SamDam;
-        if (Enemy2_HP <= 0) {
+        if (enemy2_HP <= 0) {
+          Enemydisp2.innerText = "There is peace.";
           kill("Enemy2");
         } else {
           spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
@@ -402,6 +476,7 @@ function hurt(Name, who) {
       } else if (who == "Zack") {
         enemy2_HP -= ZackDam;
         if (enemy2_HP <= 0) {
+          Enemydisp2.innerText = "There is peace.";
           kill("Enemy2");
         } else {
           spawn2(enemy2_name, enemy2_HP, enemy2_MON, enemy2_damage);
@@ -601,26 +676,23 @@ function boss(Name) {
 }
 function buff(Name) {
   if (Name == "Sam") {
-    if ((SamsHP <= 10 && enemy2_HP <= 1) || enemy_HP <= 1) {
-      SamDam += 5;
+    if (enemy2_HP >= 1 || enemy_HP >= 1) {
       SamDam *= 1.5;
       SamDamdisp.innerText = "Phoenixs Dam: " + SamDam;
       return;
-    } else if (enemy2_HP <= 1 || enemy_HP <= 1) {
+    } else if (enemy2_HP <= 0 || enemy_HP <= 0) {
       {
-        SamsMPdisp.innerText = "Phoenixs MP: " + SamsMP;
-        SamDam += 5;
-        SamDamdisp.innerText = "Phoenixs Dam: " + SamDam;
+        return x;
       }
-    } else if (Name == "Zack") {
-      if ((ZacksHP <= 10 && enemy2_HP <= 1) || enemy_HP <= 1) {
-        ZackDam += 5;
-        ZackDam *= 1.5;
-        ZackDamdisp.innerText = "Links Dam: " + ZackDam;
-      } else if (enemy2_HP <= 1 || enemy_HP <= 1) {
-        ZacksMPdisp.innerText = "Links MP: " + ZacksMP;
-        ZackDam += 5;
-        ZackDamdisp.innerText = "Links Dam: " + ZackDam;
+    }
+  } else if (Name == "Zack") {
+    if (enemy2_HP >= 1 || enemy_HP >= 1) {
+      ZackDam *= 1.5;
+      ZackDamdisp.innerText = "Links Dam: " + ZackDam;
+      return;
+    } else if (enemy2_HP <= 0 || enemy_HP <= 0) {
+      {
+        return x;
       }
     }
   }
@@ -737,7 +809,12 @@ function story(lvl) {
   }
 }
 function xpAdd(progress) {
-  progressElement.style.width = progress + "%";
+  console.log(xp);
+  xp = xp + progress;
+  xp = xp.toString();
+  xp = xp.replace("%", "");
+  progressElement.style.width = xp + "%";
+  xp = parseInt(xp);
 }
 function addResult(inputAsString, output) {
   const outputAsString =
@@ -751,9 +828,8 @@ function addResult(inputAsString, output) {
   inputLogElement.textContent = `> ${inputAsString}`;
   outputLogElement.textContent = outputAsString;
 }
-
-//TODO make XP work
 //TODO Add more to story
+const lvldisp = document.getElementById("lvldisp");
 const consoleInput = document.querySelector(".console-input");
 const progressBarClass = document.querySelector(".progress-bar");
 const progressElement = document.getElementById("progress");
@@ -768,8 +844,10 @@ const SamDamdisp = document.getElementById("SamDam"); //Get the Dam
 const ZackDamdisp = document.getElementById("ZackDam"); //Get the Dam
 const ZackArmordisp = document.getElementById("Zacks_armor"); //Get the Armor
 const SamArmordisp = document.getElementById("Sams_armor"); //Get the Armor
+const x = "❌"; //Get the X
 const loot = ["red", "blue", "green", "buff", "revive", "refill"]; //Get the loot
-const blocke = [0, 0, 0, 0, 0, 0, 0, 1, 1, 1];
+const blocke = [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0];
+let lvl = 1;
 let ZacksHP = 100; //HP is health
 let default_Dam = 10; //Dam is damage but this one is the default
 let ZackDam = 10; //Dam is damage
@@ -788,8 +866,8 @@ let enemy2_HP = 0; //HP is health
 let enemy2_damage = 0; //Dam is damage
 let enemy_name = "None"; //Name
 let enemy2_name = "None"; //Name
-let x = "❌";
 let xp = 0;
+let loote;
 SamsHPdisp.innerText = "Phoenixs HP: " + SamsHP; //HP is health
 ZacksHPdisp.innerText = "Links HP: " + ZacksHP; //HP is health
 SamsMPdisp.innerText = "Phoenixs MP: " + SamsMP; //MP is mana
@@ -801,6 +879,7 @@ SamArmordisp.innerText = "Phoenixs Armor: " + Sams_armor; //Armor
 ZackArmordisp.innerText = "Links Armor: " + Zacks_armor; //Armor
 Enemydisp.innerText = "There is peace."; //Enemy
 Enemydisp2.innerText = "There is peace."; //Enemy
+lvldisp.innerText = "Team Level: " + lvl; //Level
 //MISCELLANEOUS
 consoleInput.addEventListener("keyup", (e) => {
   const code = consoleInput.value.trim();
@@ -819,4 +898,5 @@ consoleInput.addEventListener("keyup", (e) => {
     consoleInput.value = "";
   }
 });
-//800!
+
+//900!!!

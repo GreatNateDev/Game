@@ -57,3 +57,6 @@ p {
   background-color: #4caf50;
   transition: width 5s ease-in-out;
 }
+#lvldisp {
+  color: aquamarine;
+}
