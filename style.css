@@ -47,6 +47,7 @@ p {
   background-color: #ddd;
   border-radius: 10px;
   overflow: hidden;
+  display: none;
 }
 
 .progress {
@@ -54,6 +55,7 @@ p {
   width: 0;
   background-color: #4caf50;
   transition: width 5s ease-in-out;
+  display: none;
 }
 #lvldisp {
   color: aquamarine;
