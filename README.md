@@ -9,6 +9,3 @@ So here is the game that i made to help them to log enemy points levels xp items
 they love it alot and i hope you find it interesting at least lol
 #### TODO:
 finish wiki
-fix power system
-fix leveling up system
-make block a 10% chance
